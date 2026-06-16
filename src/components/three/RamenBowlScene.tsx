@@ -1,0 +1,30 @@
+import { Canvas } from '@react-three/fiber'
+import { Suspense } from 'react'
+import { ContactShadows } from '@react-three/drei'
+import RamenBowl from './RamenBowl'
+import Steam from './Steam'
+
+export default function RamenBowlScene() {
+  return (
+    <Canvas
+      dpr={[1, 1.75]}
+      camera={{ position: [0, 2.6, 3.4], fov: 32 }}
+      gl={{ antialias: true, alpha: true }}
+      style={{ position: 'absolute', inset: 0 }}
+      onCreated={({ camera }) => camera.lookAt(0, 0.75, 0)}
+    >
+      <fog attach="fog" args={['#0a0807', 5.5, 10]} />
+
+      <ambientLight intensity={0.55} color="#3a2a22" />
+      <pointLight position={[2.6, 3.2, 2.4]} intensity={65} color="#ffd9a8" distance={14} decay={2} />
+      <pointLight position={[-3, 1.4, -2]} intensity={26} color="#d6293f" distance={11} decay={2} />
+      <directionalLight position={[0, 5, 3]} intensity={0.6} color="#fff3da" />
+
+      <Suspense fallback={null}>
+        <RamenBowl />
+        <Steam originY={1.15} radius={1.0} height={2.8} />
+        <ContactShadows position={[0, 0.02, 0]} opacity={0.55} scale={6} blur={2.4} far={2} color="#000000" />
+      </Suspense>
+    </Canvas>
+  )
+}
