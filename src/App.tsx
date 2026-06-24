@@ -11,8 +11,11 @@ import Contact from './components/sections/Contact'
 export default function App() {
   return (
     <>
+      <a href="#main" className="skip-link">
+        Przejdź do treści
+      </a>
       <Navbar />
-      <main className="pb-16 lg:pb-0">
+      <main id="main" className="pb-16 lg:pb-0">
         <Hero />
         <About />
         <Menu />

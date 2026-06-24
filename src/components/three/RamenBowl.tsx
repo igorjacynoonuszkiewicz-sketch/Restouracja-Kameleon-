@@ -101,16 +101,16 @@ function Nori() {
 }
 
 function Scallions() {
-  const positions: [number, number, number][] = [
-    [0.15, 1.2, 0.35],
-    [0.3, 1.22, 0.42],
-    [-0.1, 1.21, 0.4],
-    [0.45, 1.19, 0.3],
+  const scallions: { pos: [number, number, number]; rot: [number, number, number] }[] = [
+    { pos: [0.15, 1.2, 0.35], rot: [Math.PI / 2.2, 0.9, 1.7] },
+    { pos: [0.3, 1.22, 0.42], rot: [Math.PI / 2.2, 2.4, 0.6] },
+    { pos: [-0.1, 1.21, 0.4], rot: [Math.PI / 2.2, 1.3, 2.9] },
+    { pos: [0.45, 1.19, 0.3], rot: [Math.PI / 2.2, 3.1, 0.2] },
   ]
   return (
     <group>
-      {positions.map((p, i) => (
-        <mesh key={i} position={p} rotation={[Math.PI / 2.2, Math.random(), Math.random()]}>
+      {scallions.map((s, i) => (
+        <mesh key={i} position={s.pos} rotation={s.rot}>
           <cylinderGeometry args={[0.025, 0.025, 0.32, 8]} />
           <meshStandardMaterial color="#6fa356" roughness={0.5} />
         </mesh>

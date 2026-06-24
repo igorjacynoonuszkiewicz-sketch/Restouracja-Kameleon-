@@ -111,11 +111,12 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-9">
+          <nav aria-label="Główna nawigacja" className="hidden lg:flex items-center gap-9">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                aria-current={activeSection === link.href ? 'true' : undefined}
                 className={`text-sm uppercase tracking-[0.15em] transition-colors relative after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full ${
                   activeSection === link.href ? 'text-gold after:w-full' : 'text-cream-dim hover:text-gold'
                 }`}
@@ -135,7 +136,7 @@ export default function Navbar() {
       </header>
 
       {/* ── Mobile bottom tab bar ── */}
-      <nav className="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-ink/95 backdrop-blur-md border-t border-gold/20">
+      <nav aria-label="Nawigacja mobilna" className="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-ink/95 backdrop-blur-md border-t border-gold/20">
         <div className="flex items-stretch h-16">
           {links.map((link) => {
             const isActive = activeSection === link.href
@@ -143,11 +144,13 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? 'true' : undefined}
                 className={`flex-1 flex flex-col items-center justify-center gap-0.5 transition-colors min-w-0 px-0.5 ${
                   isActive ? 'text-gold' : 'text-cream-dim'
                 }`}
               >
                 <span
+                  aria-hidden="true"
                   className={`w-10 h-7 flex items-center justify-center rounded-xl transition-all ${
                     isActive ? 'bg-gold/20' : ''
                   }`}

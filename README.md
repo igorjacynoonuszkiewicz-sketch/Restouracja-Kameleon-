@@ -26,6 +26,15 @@ Build produkcyjny:
 npm run build
 ```
 
+## SEO i dostępność (a11y)
+
+- **Meta i Open Graph / Twitter Cards** — pełne tagi w `index.html` wraz z obrazem podglądu `public/og-image.png` (1200×630).
+- **Dane strukturalne JSON-LD** typu `Restaurant` (adres, godziny otwarcia, kuchnia, geolokalizacja) — wspiera wyniki rozszerzone Google i lokalne SEO.
+- **`robots.txt` i `sitemap.xml`** w katalogu `public/`.
+- **Dostępność:** link „przejdź do treści", `aria-current` w nawigacji, `aria-live` na potwierdzeniu rezerwacji, widoczny focus dla klawiatury oraz pełne wsparcie `prefers-reduced-motion`.
+
+> **Przed wdrożeniem produkcyjnym** zamień placeholder domeny `https://dimsumramen.pl/` (w `index.html`, `public/robots.txt`, `public/sitemap.xml`) na docelowy adres strony.
+
 ## Znane ograniczenia
 
 - Formularz rezerwacji jest obecnie frontendowy — nie wysyła jeszcze powiadomień e-mail/SMS ani nie zapisuje rezerwacji w żadnym backendzie.

@@ -1,14 +1,12 @@
 import { useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { seededRandom } from './seededRandom'
 
 function Dumpling({ seed }: { seed: number }) {
   const ref = useRef<THREE.Group>(null)
   const data = useMemo(() => {
-    const rand = (n: number) => {
-      const s = Math.sin(seed * 12.9898 + n * 78.233) * 43758.5453
-      return s - Math.floor(s)
-    }
+    const rand = (n: number) => seededRandom(seed, n)
     return {
       x: (rand(1) - 0.5) * 7,
       y: (rand(2) - 0.5) * 3.4,
