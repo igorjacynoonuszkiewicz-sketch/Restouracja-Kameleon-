@@ -69,9 +69,9 @@ export default function Reservation() {
         />
 
         <Reveal>
-          <div className="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
+          <div className="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden" aria-live="polite">
             {status !== 'done' ? (
-              <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} aria-label="Formularz rezerwacji stolika" className="grid sm:grid-cols-2 gap-5">
                 <Field label="Imię i nazwisko" required>
                   <input
                     type="text"

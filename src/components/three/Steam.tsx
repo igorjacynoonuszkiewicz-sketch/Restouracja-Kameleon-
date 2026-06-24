@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { getSteamTexture } from './steamTexture'
+import { makeRng } from './seededRandom'
 
 interface Particle {
   baseX: number
@@ -25,15 +26,18 @@ export default function Steam({ count = 22, radius = 1.1, height = 3.6, originY 
   const texture = useMemo(() => getSteamTexture(), [])
 
   const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: count }).map(() => ({
-      baseX: (Math.random() - 0.5) * radius,
-      baseZ: (Math.random() - 0.5) * radius,
-      speed: 0.35 + Math.random() * 0.45,
-      offset: Math.random() * height,
-      scale: 0.5 + Math.random() * 0.9,
-      swayFreq: 0.5 + Math.random() * 0.8,
-      swayAmp: 0.15 + Math.random() * 0.25,
-    }))
+    return Array.from({ length: count }).map((_, i) => {
+      const rand = makeRng(i + 1)
+      return {
+        baseX: (rand() - 0.5) * radius,
+        baseZ: (rand() - 0.5) * radius,
+        speed: 0.35 + rand() * 0.45,
+        offset: rand() * height,
+        scale: 0.5 + rand() * 0.9,
+        swayFreq: 0.5 + rand() * 0.8,
+        swayAmp: 0.15 + rand() * 0.25,
+      }
+    })
   }, [count, radius, height])
 
   const dummy = useMemo(() => new THREE.Object3D(), [])
