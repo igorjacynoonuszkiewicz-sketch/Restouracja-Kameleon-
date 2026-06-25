@@ -3,12 +3,13 @@ interface SmokeWispsProps {
   className?: string
 }
 
+// Para z bulionu — fallback CSS (mobile / brak 3D / prefers-reduced-motion).
 export default function SmokeWisps({ count = 6, className = '' }: SmokeWispsProps) {
   const wisps = Array.from({ length: count }).map((_, i) => {
     const size = 30 + ((i * 17) % 40)
     const left = 30 + ((i * 11) % 40)
     const delay = i * 1.1
-    const drift = (i % 2 === 0 ? 1 : -1) * (20 + i * 6)
+    const drift = (i % 2 === 0 ? 1 : -1) * (18 + i * 6)
     return { size, left, delay, drift, key: i }
   })
 
@@ -17,14 +18,14 @@ export default function SmokeWisps({ count = 6, className = '' }: SmokeWispsProp
       {wisps.map((w) => (
         <span
           key={w.key}
-          className="smoke-wisp"
+          className="steam-wisp"
           style={{
             width: w.size,
             height: w.size,
             left: `${w.left}%`,
             bottom: 0,
             animationDelay: `${w.delay}s`,
-            ['--smoke-drift' as string]: `${w.drift}px`,
+            ['--steam-drift' as string]: `${w.drift}px`,
           }}
         />
       ))}

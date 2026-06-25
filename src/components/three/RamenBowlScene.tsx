@@ -13,12 +13,12 @@ export default function RamenBowlScene() {
       style={{ position: 'absolute', inset: 0 }}
       onCreated={({ camera }) => camera.lookAt(0, 0.75, 0)}
     >
-      <fog attach="fog" args={['#0a0807', 5.5, 10]} />
+      <fog attach="fog" args={['#0c0c0e', 5.5, 10]} />
 
-      <ambientLight intensity={0.55} color="#3a2a22" />
-      <pointLight position={[2.6, 3.2, 2.4]} intensity={65} color="#ffd9a8" distance={14} decay={2} />
-      <pointLight position={[-3, 1.4, -2]} intensity={26} color="#d6293f" distance={11} decay={2} />
-      <directionalLight position={[0, 5, 3]} intensity={0.6} color="#fff3da" />
+      <ambientLight intensity={0.5} color="#2c2722" />
+      <pointLight position={[2.6, 3.2, 2.4]} intensity={62} color="#f0c98a" distance={14} decay={2} />
+      <pointLight position={[-3, 1.4, -2]} intensity={28} color="#d3392b" distance={11} decay={2} />
+      <directionalLight position={[0, 5, 3]} intensity={0.55} color="#cfd6dd" />
 
       <Suspense fallback={null}>
         <RamenBowl />

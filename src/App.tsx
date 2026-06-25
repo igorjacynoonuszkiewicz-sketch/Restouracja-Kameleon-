@@ -3,9 +3,8 @@ import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
 import Menu from './components/sections/Menu'
-import Gallery from './components/sections/Gallery'
-import Reviews from './components/sections/Reviews'
-import Reservation from './components/sections/Reservation'
+import DimSum from './components/sections/DimSum'
+import Proof from './components/sections/Proof'
 import Contact from './components/sections/Contact'
 
 export default function App() {
@@ -19,9 +18,8 @@ export default function App() {
         <Hero />
         <About />
         <Menu />
-        <Gallery />
-        <Reviews />
-        <Reservation />
+        <DimSum />
+        <Proof />
         <Contact />
       </main>
       <Footer />
