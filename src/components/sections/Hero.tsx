@@ -3,6 +3,11 @@ import { gsap } from '../../lib/gsap'
 import HallScene from '../ui/HallScene'
 import { site, openingHours, proof } from '../../data/site'
 
+// Zdjęcie wnętrza Montowni. Wrzuć plik do `public/` (np. public/montownia.jpg)
+// i wpisz tu ścieżkę — slot poniżej automatycznie pokaże fotografię zamiast
+// placeholdera. Puste = atmosferyczny placeholder hali.
+const HERO_IMAGE: string = ''
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const sceneRef = useRef<HTMLDivElement>(null)
@@ -20,7 +25,7 @@ export default function Hero() {
 
     const ctx = gsap.context(() => {
       gsap.to(sceneRef.current, {
-        yPercent: 12,
+        yPercent: 10,
         ease: 'none',
         scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: true },
       })
@@ -36,23 +41,54 @@ export default function Hero() {
 
   return (
     <section id="home" ref={containerRef} className="relative min-h-[100svh] flex flex-col overflow-hidden bg-ink">
-      {/* Scena hali — industrialny klimat dawnej stoczni */}
-      <div ref={sceneRef} className="absolute inset-y-[-6%] right-[-10%] sm:right-[-4%] md:right-0 w-[120%] sm:w-[78%] md:w-[60%]">
-        <HallScene className="w-full h-full" />
+      {/* Slot na zdjęcie wnętrza Montowni — kadr z ramką, gotowy do podmiany */}
+      <div
+        ref={sceneRef}
+        className="absolute inset-y-[-5%] right-[-10%] sm:right-[-4%] md:right-6 lg:right-10 w-[120%] sm:w-[78%] md:w-[52%] lg:w-[48%]"
+      >
+        <figure className="relative w-full h-full md:border md:border-line overflow-hidden" style={{ borderRadius: 'var(--radius)' }}>
+          {/* Atmosfera hali jako tło / fallback gdy brak zdjęcia */}
+          <HallScene className="w-full h-full" />
+
+          {HERO_IMAGE ? (
+            <img
+              src={HERO_IMAGE}
+              alt="Wnętrze restauracji DimSum & Ramen w hali Food Hall Montownia w Gdańsku"
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+            />
+          ) : (
+            <figcaption className="absolute inset-0 hidden md:flex flex-col items-center justify-center text-center px-8">
+              <span className="font-display text-bone/30 text-3xl italic mb-3">Food Hall Montownia</span>
+              <span className="t-meta text-bone-dim/60 text-[0.625rem]">[ tu zdjęcie wnętrza hali ]</span>
+            </figcaption>
+          )}
+
+          {/* Znaczniki rejestracji w rogach — styl dokumentacji */}
+          <Corner className="top-2 left-2 border-t border-l" />
+          <Corner className="top-2 right-2 border-t border-r" />
+          <Corner className="bottom-2 left-2 border-b border-l" />
+          <Corner className="bottom-2 right-2 border-b border-r" />
+
+          {/* Podpis kadru */}
+          <span className="absolute bottom-3 left-3 t-meta text-bone-dim/60 text-[0.5625rem] hidden md:block">
+            Food Hall Montownia · wnętrze hali
+          </span>
+        </figure>
       </div>
 
       {/* Kalka techniczna + ziarno */}
-      <div className="absolute inset-0 bg-blueprint opacity-[0.25]" />
+      <div className="absolute inset-0 bg-blueprint opacity-[0.2]" />
       <div className="absolute inset-0 bg-grain opacity-50" />
 
       {/* Maska czytelności po lewej + dół */}
-      <div className="absolute inset-0 bg-gradient-to-r from-ink from-5% via-ink/85 via-42% to-transparent to-74% md:via-32% md:to-62%" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink from-5% via-ink/85 via-42% to-transparent to-74% md:via-30% md:to-58%" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
 
       {/* Treść */}
-      <div className="relative z-10 flex-1 flex items-center">
+      <div className="relative z-10 flex-1 flex items-center pointer-events-none">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 md:pt-32">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl pointer-events-auto">
             <p className="hero-line t-meta text-bone-dim mb-7 flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="text-amber">●</span>
               Food Hall Montownia
@@ -103,6 +139,10 @@ export default function Hero() {
       </div>
     </section>
   )
+}
+
+function Corner({ className = '' }: { className?: string }) {
+  return <span aria-hidden className={`absolute w-4 h-4 border-bone-dim/40 hidden md:block ${className}`} />
 }
 
 function Meta({ label, value, className = '' }: { label: string; value: string; className?: string }) {

@@ -107,11 +107,6 @@ export default function HallScene({ className = '' }: { className?: string }) {
 
       {/* Para z bulionu w głębi hali */}
       <SmokeWisps className="inset-x-[35%] bottom-[34%] h-1/3" count={6} />
-
-      {/* Notatka: miejsce na realne zdjęcie wnętrza */}
-      <span className="absolute bottom-4 right-5 t-meta text-bone-dim/45 text-[0.5625rem] hidden sm:block">
-        [ wnętrze hali — miejsce na zdjęcie ]
-      </span>
     </div>
   )
 }

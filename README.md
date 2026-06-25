@@ -12,7 +12,7 @@ Opiniotwórczy system designu zakorzeniony w trzech rzeczach: **para z bulionu**
 - Hairline / ramki techniczne zamiast kart z cieniem; **jeden** promień zaokrąglenia (2px) na całą stronę.
 - Display serif **Fraunces**, treść **Inter**, metadane **JetBrains Mono**.
 - Skala typograficzna jako system (`.t-display`, `.t-h1`…`.t-meta` w `src/index.css`).
-- **Hero**: industrialna scena hali (SVG w jednym punkcie zbiegu — `src/components/ui/HallScene.tsx`) z miejscem na realne zdjęcie wnętrza Montowni; para w CSS.
+- **Hero**: kadr wnętrza Montowni w ramce z industrialną scenią hali jako tłem/placeholderem (SVG w jednym punkcie zbiegu — `src/components/ui/HallScene.tsx`); para w CSS. Aby wstawić prawdziwe zdjęcie: wrzuć plik do `public/` i ustaw `HERO_IMAGE` w `src/components/sections/Hero.tsx` (np. `'/montownia.jpg'`) — slot sam pokaże fotografię zamiast placeholdera.
 
 ## Stos technologiczny
 
