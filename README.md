@@ -6,23 +6,24 @@ Strona dla **DimSum & Ramen** — autorskiej kuchni japońskiej i chińskiej w *
 
 Opiniotwórczy system designu zakorzeniony w trzech rzeczach: **para z bulionu**, **dawna stocznia / hala U-Bootów**, **japońska precyzja**.
 
-- Ciemna baza (smoła stoczniowa, prawie czarna), ciepło bulionu (bursztyn / sezam) jako neutrale.
-- **Jeden** akcent — czerwień rayu (`--color-rayu`).
+- Baza w głębokim granacie / morskiej toni doku (prawie czarna), ciepło bulionu (bursztyn / sezam) jako neutrale.
+- **Jeden** akcent — ciepły bursztyn / miedź (`--color-amber`).
 - **Monospace** (JetBrains Mono) na metadanych: ceny, godziny, koordynaty, numery sekcji.
 - Hairline / ramki techniczne zamiast kart z cieniem; **jeden** promień zaokrąglenia (2px) na całą stronę.
 - Display serif **Fraunces**, treść **Inter**, metadane **JetBrains Mono**.
 - Skala typograficzna jako system (`.t-display`, `.t-h1`…`.t-meta` w `src/index.css`).
+- **Hero**: industrialna scena hali (SVG w jednym punkcie zbiegu — `src/components/ui/HallScene.tsx`) z miejscem na realne zdjęcie wnętrza Montowni; para w CSS.
 
 ## Stos technologiczny
 
 - **Vite + React 19 + TypeScript**
 - **Tailwind CSS v4** (motyw w `src/index.css` przez `@theme`, bez `tailwind.config.js`)
-- **three.js** + **@react-three/fiber** + **@react-three/drei** — proceduralna miska ramenu z parą (jeden „bold moment", lazy-loaded, fallback CSS)
-- **GSAP** + `ScrollTrigger` — animacje wejścia sekcji i parallax sceny 3D
+- **SVG/CSS** — industrialna scena hali w hero (lekka, ostra na mobile), para z bulionu w CSS
+- **GSAP** + `ScrollTrigger` — animacje wejścia sekcji i parallax sceny hero
 
 ## Sekcje
 
-1. **Hero** — obietnica, miska ramenu z parą (3D), pasek metadanych w stylu dokumentacji stoczniowej.
+1. **Hero** — obietnica, industrialna scena hali dawnej stoczni (z miejscem na zdjęcie wnętrza), pasek metadanych w stylu dokumentacji stoczniowej.
 2. **Historia** (`#historia`) — Paulina i Wojciech, „wszystko od podstaw", kontekst Montowni i U-Bootów.
 3. **Ramen** (`#ramen`) — karta dań jako bohater; Tantanmen wyróżniony jako wybór szefa.
 4. **Dim Sum** (`#dimsum`) — ręcznie lepione pierożki, chińska połowa karty.

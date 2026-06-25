@@ -1,9 +1,7 @@
-import { lazy, Suspense, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from '../../lib/gsap'
-import SmokeWisps from '../ui/SmokeWisps'
+import HallScene from '../ui/HallScene'
 import { site, openingHours, proof } from '../../data/site'
-
-const RamenBowlScene = lazy(() => import('../three/RamenBowlScene'))
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -14,11 +12,15 @@ export default function Hero() {
     if (!root) return
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-    tl.fromTo(root.querySelectorAll('.hero-line'), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, delay: 0.25 })
+    tl.fromTo(
+      root.querySelectorAll('.hero-line'),
+      { opacity: 0, y: 28 },
+      { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, delay: 0.2 },
+    )
 
     const ctx = gsap.context(() => {
       gsap.to(sceneRef.current, {
-        yPercent: 14,
+        yPercent: 12,
         ease: 'none',
         scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: true },
       })
@@ -34,30 +36,17 @@ export default function Hero() {
 
   return (
     <section id="home" ref={containerRef} className="relative min-h-[100svh] flex flex-col overflow-hidden bg-ink">
-      {/* Kalka techniczna + ziarno */}
-      <div className="absolute inset-0 bg-blueprint opacity-[0.4]" />
-      <div className="absolute inset-0 bg-grain opacity-50" />
-      <div
-        className="absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 60% 55% at 72% 42%, rgba(211,57,43,0.16), transparent 70%)' }}
-      />
-
-      {/* Scena 3D — przesunięta w prawo, asymetria */}
-      <div ref={sceneRef} className="absolute inset-y-0 right-[-12%] sm:right-[-4%] md:right-0 w-[115%] sm:w-[80%] md:w-[58%] opacity-95">
-        <Suspense
-          fallback={
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-56 h-56 rounded-full" style={{ background: 'radial-gradient(circle, rgba(214,138,60,0.25), transparent 70%)' }} />
-            </div>
-          }
-        >
-          <RamenBowlScene />
-        </Suspense>
-        <SmokeWisps className="inset-x-0 bottom-[20%] h-1/2 hidden sm:block" count={6} />
+      {/* Scena hali — industrialny klimat dawnej stoczni */}
+      <div ref={sceneRef} className="absolute inset-y-[-6%] right-[-10%] sm:right-[-4%] md:right-0 w-[120%] sm:w-[78%] md:w-[60%]">
+        <HallScene className="w-full h-full" />
       </div>
 
-      {/* Maska czytelności po lewej */}
-      <div className="absolute inset-0 bg-gradient-to-r from-ink from-5% via-ink/80 via-40% to-transparent to-72% md:via-30% md:to-60%" />
+      {/* Kalka techniczna + ziarno */}
+      <div className="absolute inset-0 bg-blueprint opacity-[0.25]" />
+      <div className="absolute inset-0 bg-grain opacity-50" />
+
+      {/* Maska czytelności po lewej + dół */}
+      <div className="absolute inset-0 bg-gradient-to-r from-ink from-5% via-ink/85 via-42% to-transparent to-74% md:via-32% md:to-62%" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
 
       {/* Treść */}
@@ -65,27 +54,27 @@ export default function Hero() {
         <div className="w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 md:pt-32">
           <div className="max-w-2xl">
             <p className="hero-line t-meta text-bone-dim mb-7 flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span className="text-rayu">●</span>
+              <span className="text-amber">●</span>
               Food Hall Montownia
               <span className="text-line-2">/</span>
               dawna Stocznia Gdańska
             </p>
 
             <h1 className="hero-line t-display text-bone mb-7">
-              Para nad miską,
+              Składali tu okręty.
               <br />
-              <span className="text-sesame italic">stal</span> nad głową.
+              <span className="text-sesame italic">My</span> — miskę ramenu.
             </h1>
 
             <p className="hero-line t-body text-bone-dim max-w-md mb-9">
-              {site.tagline} Wywar gotowany godzinami, makaron i pierożki lepione na miejscu — w&nbsp;hali, w&nbsp;której
-              składano U-Booty.
+              Autorska kuchnia japońska i&nbsp;chińska w&nbsp;zabytkowej hali dawnej Stoczni Gdańskiej. Wywar warzony
+              godzinami, makaron i&nbsp;pierożki lepione na&nbsp;miejscu — w&nbsp;sercu Food Hall Montownia.
             </p>
 
             <div className="hero-line flex flex-wrap items-center gap-3">
               <a
                 href="#ramen"
-                className="inline-flex items-center gap-3 px-7 py-3.5 bg-rayu text-bone t-meta hover:bg-rayu-deep transition-colors"
+                className="inline-flex items-center gap-3 px-7 py-3.5 bg-amber text-ink t-meta hover:bg-amber-deep transition-colors"
                 style={{ borderRadius: 'var(--radius)' }}
               >
                 Zobacz ramen
@@ -93,7 +82,7 @@ export default function Hero() {
               </a>
               <a
                 href="#lokalizacja"
-                className="inline-flex items-center gap-3 px-7 py-3.5 border border-line-2 text-bone t-meta hover:border-bone hover:text-bone transition-colors"
+                className="inline-flex items-center gap-3 px-7 py-3.5 border border-line-2 text-bone t-meta hover:border-bone transition-colors"
                 style={{ borderRadius: 'var(--radius)' }}
               >
                 Jak dojść

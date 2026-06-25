@@ -16,7 +16,7 @@ export default function DimSum() {
               <div className="absolute inset-0 bg-blueprint opacity-[0.5]" />
               <div
                 className="absolute inset-0"
-                style={{ background: 'radial-gradient(ellipse 60% 60% at 50% 55%, rgba(211,57,43,0.12), transparent 70%)' }}
+                style={{ background: 'radial-gradient(ellipse 60% 60% at 50% 55%, rgba(227,152,74,0.14), transparent 70%)' }}
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                 <span className="t-meta text-bone-dim/70 text-[0.625rem] mb-2">[ tu zdjęcie ręcznie lepionych pierożków ]</span>

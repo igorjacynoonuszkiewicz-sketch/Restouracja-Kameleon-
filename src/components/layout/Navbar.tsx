@@ -58,7 +58,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
           <a href="#home" className="font-display text-xl md:text-2xl text-bone tracking-tight">
-            DimSum <span className="text-rayu">&amp;</span> Ramen
+            DimSum <span className="text-amber">&amp;</span> Ramen
           </a>
 
           <nav aria-label="Główna nawigacja" className="hidden lg:flex items-center gap-8">
@@ -80,7 +80,7 @@ export default function Navbar() {
             href={site.maps.link}
             target="_blank"
             rel="noreferrer"
-            className="hidden lg:inline-flex items-center px-5 py-2.5 bg-rayu text-bone t-meta text-[0.625rem] hover:bg-rayu-deep transition-colors"
+            className="hidden lg:inline-flex items-center px-5 py-2.5 bg-amber text-bone t-meta text-[0.625rem] hover:bg-amber-deep transition-colors"
             style={{ borderRadius: 'var(--radius)' }}
           >
             Jak dojść
@@ -99,7 +99,7 @@ export default function Navbar() {
                 href={l.href}
                 aria-current={isActive ? 'true' : undefined}
                 className={`flex-1 flex flex-col items-center justify-center gap-1 min-w-0 px-0.5 transition-colors ${
-                  isActive ? 'text-rayu' : 'text-bone-dim'
+                  isActive ? 'text-amber' : 'text-bone-dim'
                 }`}
               >
                 <span aria-hidden>{l.icon}</span>

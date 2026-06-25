@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-12 gap-y-10 gap-x-8">
           <div className="md:col-span-5">
             <p className="font-display text-2xl text-bone mb-3">
-              DimSum <span className="text-rayu">&amp;</span> Ramen
+              DimSum <span className="text-amber">&amp;</span> Ramen
             </p>
             <p className="t-body text-bone-dim text-sm max-w-xs">{proof.bowlsLine}</p>
           </div>

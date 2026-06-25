@@ -26,7 +26,7 @@ export default function Proof() {
         <Reveal>
           <div className="border border-line p-8 md:p-14 mb-5" style={{ borderRadius: 'var(--radius)' }}>
             <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
-              <span className="t-display text-rayu leading-none">{proof.bowlsPerMonth}</span>
+              <span className="t-display text-amber leading-none">{proof.bowlsPerMonth}</span>
               <div className="md:pb-3">
                 <p className="t-h3 text-bone mb-2">misek ramenu miesięcznie</p>
                 <p className="t-body text-bone-dim max-w-md">

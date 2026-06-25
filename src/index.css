@@ -3,30 +3,29 @@
 /* ───────────────────────────────────────────────────────────────────────
    DimSum & Ramen — system designu
    Koncept: para z bulionu × dawna Stocznia Gdańska (hala U-Bootów) ×
-   japońska precyzja. Ciemna smoła stoczniowa, ciepło bulionu jako neutrale,
-   JEDEN akcent (czerwień rayu). Monospace na metadanych, hairline zamiast
-   kart z cieniem, JEDEN promień zaokrąglenia (2px) na całą stronę.
+   japońska precyzja. Granat doku / morska toń jako baza, ciepło bulionu
+   jako neutrale, JEDEN akcent (ciepły bursztyn / miedź). Monospace na
+   metadanych, hairline zamiast kart z cieniem, JEDEN promień (2px).
    ─────────────────────────────────────────────────────────────────────── */
 
 @theme {
-  /* Baza — smoła stoczniowa, prawie czarna */
-  --color-ink: #0c0c0e;
-  --color-ink-2: #131418;
-  --color-steel: #1a1c21;
+  /* Baza — granat doku / morska toń, prawie czarna */
+  --color-ink: #0a121b;
+  --color-ink-2: #0e1a26;
+  --color-steel: #15242f;
 
   /* Hairline / ramki techniczne (zamiast cieni) */
-  --color-line: #292c33;
-  --color-line-2: #3a3e47;
+  --color-line: #21333f;
+  --color-line-2: #36505f;
 
-  /* Neutrale — ciepło bulionu (oddech dla oka), nie akcenty */
-  --color-bone: #e9e3d6;
-  --color-bone-dim: #989389;
-  --color-sesame: #c9b896;
-  --color-amber: #d68a3c;
+  /* Neutrale — ciepło bulionu / chłód stali (oddech dla oka) */
+  --color-bone: #e8e4d8;
+  --color-bone-dim: #8b97a1;
+  --color-sesame: #cdbb95;
 
-  /* JEDEN akcent — czerwień rayu */
-  --color-rayu: #d3392b;
-  --color-rayu-deep: #8f2018;
+  /* JEDEN akcent — ciepły bursztyn / miedź (lampa nad barem) */
+  --color-amber: #e3984a;
+  --color-amber-deep: #b66f2a;
 
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -65,8 +64,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-rayu);
-  color: var(--color-bone);
+  background: var(--color-amber);
+  color: var(--color-ink);
 }
 
 ::-webkit-scrollbar {
@@ -135,14 +134,14 @@ body {
 /* Cienka siatka odniesienia — jak kalka techniczna */
 .bg-blueprint {
   background-image:
-    linear-gradient(to right, rgba(58, 62, 71, 0.35) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(58, 62, 71, 0.35) 1px, transparent 1px);
+    linear-gradient(to right, rgba(54, 80, 95, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(54, 80, 95, 0.35) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
 /* Subtelne ziarno filmowe — atmosfera hali */
 .bg-grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
 }
 
@@ -155,7 +154,7 @@ body {
 /* Numer/etykieta sekcji w stylu spisu dokumentacji */
 .tag-num {
   font-family: var(--font-mono);
-  color: var(--color-rayu);
+  color: var(--color-amber);
   font-weight: 600;
 }
 
@@ -177,7 +176,7 @@ body {
 .steam-wisp {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(233, 227, 214, 0.42), rgba(233, 227, 214, 0));
+  background: radial-gradient(closest-side, rgba(232, 228, 216, 0.4), rgba(232, 228, 216, 0));
   filter: blur(7px);
   animation: var(--animate-steam);
   pointer-events: none;
@@ -202,7 +201,7 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: var(--color-rayu);
+  border-color: var(--color-amber);
 }
 input::placeholder,
 textarea::placeholder {
@@ -214,7 +213,7 @@ textarea::placeholder {
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-rayu);
+  outline: 2px solid var(--color-amber);
   outline-offset: 3px;
 }
 
@@ -225,8 +224,8 @@ button:focus-visible,
   transform: translate(-50%, -120%);
   z-index: 100;
   padding: 0.75rem 1.5rem;
-  background: var(--color-rayu);
-  color: var(--color-bone);
+  background: var(--color-amber);
+  color: var(--color-ink);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.12em;

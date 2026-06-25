@@ -57,7 +57,7 @@ export default function Contact() {
               href={site.maps.link}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-rayu text-bone t-meta hover:bg-rayu-deep transition-colors"
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-amber text-bone t-meta hover:bg-amber-deep transition-colors"
               style={{ borderRadius: 'var(--radius)' }}
             >
               Jak dojść — Google Maps

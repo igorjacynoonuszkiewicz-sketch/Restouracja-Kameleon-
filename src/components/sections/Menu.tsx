@@ -26,7 +26,7 @@ export default function Menu() {
                 <span className="t-meta text-bone-dim/70 text-[0.625rem] mb-2">[ tu zdjęcie realnego Tantanmen ]</span>
                 <span className="font-display text-bone/30 text-5xl italic">担々麺</span>
               </div>
-              <span className="absolute top-4 left-4 t-meta text-rayu">● wybór szefa</span>
+              <span className="absolute top-4 left-4 t-meta text-amber">● wybór szefa</span>
             </div>
 
             {/* Opis */}
@@ -48,7 +48,7 @@ export default function Menu() {
                 <div>
                   <div className="flex items-baseline gap-3 mb-2">
                     <h3 className="t-h3 text-bone group-hover:text-sesame transition-colors">{item.name}</h3>
-                    {item.tag && <span className="t-meta text-rayu text-[0.625rem]">{item.tag}</span>}
+                    {item.tag && <span className="t-meta text-amber text-[0.625rem]">{item.tag}</span>}
                   </div>
                   <p className="t-body text-bone-dim max-w-2xl">{item.description}</p>
                 </div>
