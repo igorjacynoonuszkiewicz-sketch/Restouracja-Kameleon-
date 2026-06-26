@@ -53,6 +53,13 @@ html {
   background: var(--color-ink);
 }
 
+/* Smooth-scroll nawigacja: każda sekcja ma swój anchor (#home, #menu, …).
+   Margines zatrzymuje przewijanie tuż pod stałym paskiem nawigacji,
+   żeby nagłówek sekcji nie chował się za headerem. */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   margin: 0;
   background: var(--color-ink);
